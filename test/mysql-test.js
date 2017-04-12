@@ -13,9 +13,7 @@ describe('MySQL adapter', function () {
             password: 'root'
         });
 
-        database.connect().then(() => {
-            return database.sync();
-        }).then(() => done());
+        database.connectAndSync().then(() => done());
     });
 
     it('should create an encapsulated sequelize model', (done) => {

@@ -11,9 +11,7 @@ describe('MongoDB adapter', function () {
             databaseName: 'test'
         });
 
-        database.connect().then(() => {
-            return database.sync();
-        }).then(() => done());
+        database.connectAndSync().then(() => done());
     });
 
     it('should create an encapsulated mongoose model', (done) => {

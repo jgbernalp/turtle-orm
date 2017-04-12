@@ -1,4 +1,4 @@
-# turtle-orm
+# Turle ORM
 
 Turtle ORM aims to allow developers to use several relational and non-relational databases as a persistent layer abstracction for their nodejs projects, with a simple and agnostic logic. It uses well known libraries to handle database interaction.
 
@@ -30,9 +30,7 @@ let database = new Database({
     password: 'myPas$w0rd'
 });
 
-database.connect().then(() => {
-    return database.sync();
-}).then(() => {
+database.connectAndSync().then(() => {
     let Users = database.model('users', {
         username: { type: Types.STRING },
         password: { type: Types.STRING }
@@ -61,9 +59,7 @@ let database = new Database({
     password: 'myPas$w0rd'
 });
 
-database.connect().then(() => {
-    return database.sync();
-}).then(() => {
+database.connectAndSync().then(() => {
     let Users = database.model('users', {
         username: { type: Types.STRING },
         password: { type: Types.STRING }
