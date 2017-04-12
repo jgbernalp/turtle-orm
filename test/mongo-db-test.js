@@ -22,6 +22,7 @@ describe('MongoDB adapter', function () {
 
         let Users = database.model('users', {
             username: { type: Types.STRING },
+            id_test: { type: Types.OBJECT_ID },
             password: { type: Types.STRING }
         });
 
@@ -29,6 +30,8 @@ describe('MongoDB adapter', function () {
         expect(Users.findOne).to.be.a('function');
         expect(Users.findAll).to.be.a('function');
         expect(Users.remove).to.be.a('function');
+
+        expect(Users.schema.id_test).to.be.an('object');
 
         done();
     });
