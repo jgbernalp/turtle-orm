@@ -1,0 +1,40 @@
+{
+  "name": "turtle-orm",
+  "version": "1.0.0",
+  "description": "Node JS ORM for MongoDB and Mysql",
+  "main": "index.js",
+  "scripts": {
+    "test": "_mocha $(find test -name *-test.js)"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jgbernalp/turtle-orm"
+  },
+  "bugs": {
+    "url": "https://github.com/jgbernalp/turtle-orm/issues"
+  },
+  "author": {
+    "name": "Gabriel Bernal",
+    "email": "gabrielbernalp@gmail.com"
+  },
+  "engines": {
+    "node": ">=6.9.4"
+  },
+  "keywords": [
+    "nodejs",
+    "orm",
+    "mysql",
+    "mongo",
+    "mongodb"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "mongoose": "^4.9.4",
+    "mysql": "^2.13.0",
+    "sequelize": "^3.30.4"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.2.0"
+  }
+}
