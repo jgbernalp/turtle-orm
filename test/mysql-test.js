@@ -2,29 +2,23 @@ process.env.NODE_ENV = 'test';
 
 const expect = require('chai').expect;
 const Database = require('../lib/database');
+const ModelFactory = require('../lib/model-factory');
 const Types = require('../lib/types');
 
 describe('MySQL adapter', function () {
     it('should connect to a local MySQL DB', (done) => {
-        let database = new Database({
+        ModelFactory.clearInstances();
+
+        Database.create({
             dialect: 'mysql',
             databaseName: 'test',
             username: 'root',
             password: 'root'
-        });
-
-        database.connectAndSync().then(() => done());
+        }).connectAndSync().then(() => done());
     });
 
     it('should create an encapsulated sequelize model', (done) => {
-        let database = new Database({
-            dialect: 'mysql',
-            databaseName: 'test',
-            username: 'root',
-            password: 'root'
-        });
-
-        let Users = database.model('users', {
+        let Users = ModelFactory.model('users', {
             username: { type: Types.STRING },
             password: { type: Types.STRING }
         });
@@ -38,14 +32,7 @@ describe('MySQL adapter', function () {
     });
 
     it('should create an encapsulated sequelize model instance', (done) => {
-        let database = new Database({
-            dialect: 'mysql',
-            databaseName: 'test',
-            username: 'root',
-            password: 'root'
-        });
-
-        let Users = database.model('users', {
+        let Users = ModelFactory.model('users', {
             username: { type: Types.STRING },
             password: { type: Types.STRING }
         });

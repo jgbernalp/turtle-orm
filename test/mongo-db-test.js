@@ -2,25 +2,21 @@ process.env.NODE_ENV = 'test';
 
 const expect = require('chai').expect;
 const Database = require('../lib/database');
+const ModelFactory = require('../lib/model-factory');
 const Types = require('../lib/types');
 
 describe('MongoDB adapter', function () {
     it('should connect to a local MongoDB DB', (done) => {
-        let database = new Database({
+        ModelFactory.clearInstances();
+
+        Database.create({
             dialect: 'mongodb',
             databaseName: 'test'
-        });
-
-        database.connectAndSync().then(() => done());
+        }).connectAndSync().then(() => done());
     });
 
     it('should create an encapsulated mongoose model', (done) => {
-        let database = new Database({
-            dialect: 'mongodb',
-            databaseName: 'test'
-        });
-
-        let Users = database.model('users', {
+        let Users = ModelFactory.model('users', {
             username: { type: Types.STRING },
             id_test: { type: Types.OBJECT_ID },
             password: { type: Types.STRING }
@@ -37,12 +33,7 @@ describe('MongoDB adapter', function () {
     });
 
     it('should create an encapsulated mongoose model instance', (done) => {
-        let database = new Database({
-            dialect: 'mongodb',
-            databaseName: 'test'
-        });
-
-        let Users = database.model('users', {
+        let Users = ModelFactory.model('users', {
             username: { type: Types.STRING },
             password: { type: Types.STRING }
         });
