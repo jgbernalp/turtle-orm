@@ -6,6 +6,14 @@ const ModelFactory = require('../lib/model-factory');
 const Types = require('../lib/types');
 
 describe('MongoDB adapter', function () {
+    before(() => {
+        ModelFactory.clearInstances();
+    });
+
+    after((done) => {
+        Database.getInstance().disconnect().then(() => done());
+    });
+
     it('should connect to a local MongoDB DB', (done) => {
         ModelFactory.clearInstances();
 

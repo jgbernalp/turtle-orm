@@ -6,9 +6,15 @@ const ModelFactory = require('../lib/model-factory');
 const Types = require('../lib/types');
 
 describe('MySQL adapter', function () {
-    it('should connect to a local MySQL DB', (done) => {
+    before(()=>{
         ModelFactory.clearInstances();
+    });
 
+    after((done) => {
+        Database.getInstance().disconnect().then(() => done());
+    });
+
+    it('should connect to a local MySQL DB', (done) => {
         Database.create({
             dialect: 'mysql',
             databaseName: 'test',
