@@ -15,8 +15,6 @@ describe('MongoDB adapter', function () {
     });
 
     it('should connect to a local MongoDB DB', (done) => {
-        ModelFactory.clearInstances();
-
         Database.create({
             dialect: 'mongodb',
             databaseName: 'test'
