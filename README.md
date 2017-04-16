@@ -19,9 +19,16 @@ npm i turtle-orm --save
 
 ```javascript
 const Database = require('turtle-orm').Database;
+const ModelFactory = require('turtle-orm').ModelFactory;
 const Types = require('turtle-orm').Types;
 
-let database = new Database({
+let Users = ModelFactory.model('users', {
+    username: { type: Types.STRING },
+    password: { type: Types.STRING },
+    clientId: { type: Types.OBJECT_ID }
+});
+
+let database = Database.create({
     dialect: 'mongodb',
     port: 27017,
     hostName: 'localhost',
@@ -31,11 +38,6 @@ let database = new Database({
 });
 
 database.connectAndSync().then(() => {
-    let Users = database.model('users', {
-        username: { type: Types.STRING },
-        password: { type: Types.STRING }
-    });
-
     let userInstance = Users.create({ username: 'test@gmail.com', password: 'pass' });
 
     userInstance.save().then(resource => {
@@ -48,9 +50,15 @@ database.connectAndSync().then(() => {
 
 ```javascript
 const Database = require('turtle-orm').Database;
+const ModelFactory = require('turtle-orm').ModelFactory;
 const Types = require('turtle-orm').Types;
 
-let database = new Database({
+let Users = ModelFactory.model('users', {
+    username: { type: Types.STRING },
+    password: { type: Types.STRING }
+});
+
+let database = Database.create({
     dialect: 'mysql',
     port: 3306,
     hostName: 'localhost',
@@ -60,11 +68,6 @@ let database = new Database({
 });
 
 database.connectAndSync().then(() => {
-    let Users = database.model('users', {
-        username: { type: Types.STRING },
-        password: { type: Types.STRING }
-    });
-
     let userInstance = Users.create({ username: 'test@gmail.com', password: 'pass' });
 
     userInstance.save().then(resource => {
