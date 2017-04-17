@@ -17,7 +17,7 @@ describe('MongoDB adapter', function () {
     it('should connect to a local MongoDB DB', (done) => {
         Database.create({
             dialect: 'mongodb',
-            databaseName: 'test'
+            db: 'test'
         }).connectAndSync().then(() => done());
     });
 

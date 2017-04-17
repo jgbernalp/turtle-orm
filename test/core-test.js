@@ -9,7 +9,7 @@ describe('Core test', function () {
 
         Database.create({
             dialect: 'mongodb',
-            databaseName: 'test'
+            db: 'test'
         }).connectAndSync()
             .then(Database.getInstance().disconnect())
             .then(() => done())
@@ -38,7 +38,7 @@ describe('Core test', function () {
     it('should get a database instance', (done) => {
         let database = Database.create({
             dialect: 'mongodb',
-            databaseName: 'test'
+            db: 'test'
         }).connectAndSync()
             .then(() => {
                 database === Database.getInstance();
@@ -52,7 +52,7 @@ describe('Core test', function () {
     it('should drop a database', (done) => {
         Database.create({
             dialect: 'mongodb',
-            databaseName: 'test'
+            db: 'test'
         }).connectAndSync()
             .then(Database.getInstance().dropDatabase())
             .then(Database.getInstance().disconnect())

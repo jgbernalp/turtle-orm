@@ -17,7 +17,7 @@ describe('MySQL adapter', function () {
     it('should connect to a local MySQL DB', (done) => {
         Database.create({
             dialect: 'mysql',
-            databaseName: 'test',
+            db: 'test',
             username: 'root',
             password: 'root'
         }).connectAndSync().then(() => done());
