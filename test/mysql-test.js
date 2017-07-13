@@ -6,7 +6,7 @@ const ModelFactory = require('../lib/model-factory');
 const Types = require('../lib/types');
 
 describe('MySQL adapter', function () {
-    before(()=>{
+    before(() => {
         ModelFactory.clearInstances();
     });
 
