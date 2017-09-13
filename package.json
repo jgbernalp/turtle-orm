@@ -1,6 +1,6 @@
 {
   "name": "turtle-orm",
-  "version": "1.0.19",
+  "version": "1.0.31",
   "description": "Node JS ORM for MongoDB and Mysql",
   "main": "index.js",
   "scripts": {
@@ -29,7 +29,7 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "mongoose": "^4.9.4",
+    "mongoose": "4.10.8",
     "mysql": "^2.13.0",
     "sequelize": "^3.30.4"
   },

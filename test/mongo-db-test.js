@@ -55,4 +55,24 @@ describe('MongoDB adapter', function () {
             done();
         });
     });
+
+    it('should count elements', (done) => {
+        let Users = ModelFactory.model('users', {
+            username: { type: Types.STRING },
+            password: { type: Types.STRING }
+        });
+
+        Users.remove({}).then(() => {
+            let userInstance = Users.create({ username: 'test@gmail.com', password: 'pass' });
+
+            userInstance.save().then(resource => {
+                Users.count().then(count => {
+                    expect(count).to.equal(1);
+                    done();
+                }, error => {
+                    expect(error).to.be.a('null');
+                });
+            });
+        });
+    });
 });
